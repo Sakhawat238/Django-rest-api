@@ -1,11 +1,9 @@
 from django.urls import path, include
-from .views import SubjectViewSet
-# from rest_framework import routers
+from methodone.views import SubjectList, SubjectDetails, SubjectCreate, SubjectUpdate
 
-# router = routers.DefaultRouter()
-# router.register('', SubjectViewSet)
-
-urlpatterns = [
-    # path('subjects/', include(router.urls))   
-    path('subjects/', SubjectViewSet, name="subjects_list") 
+urlpatterns = [  
+    path('subjects/', SubjectList, name="subjects_list"),
+    path('subjects/<int:id>/', SubjectDetails, name="subject_details"),
+    path('subjects/add/', SubjectCreate, name="subject_create"),
+    path('subjects/edit/<int:id>/', SubjectUpdate, name="subject_update")   
 ]
