@@ -1,5 +1,5 @@
 from Table.models import Subject
-from methodone.serializers import SubjectSerializer
+from method1.serializers import SubjectSerializer
 from django.http import JsonResponse
 import io
 from rest_framework.parsers import JSONParser

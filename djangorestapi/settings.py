@@ -11,7 +11,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'Table',
-    'methodone',
+    'method1',
+    'method2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

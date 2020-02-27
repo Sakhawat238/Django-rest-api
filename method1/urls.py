@@ -1,5 +1,5 @@
 from django.urls import path, include
-from methodone.views import SubjectList, SubjectDetails, SubjectCreate, SubjectUpdate
+from method1.views import SubjectList, SubjectDetails, SubjectCreate, SubjectUpdate
 
 urlpatterns = [  
     path('subjects/', SubjectList, name="subjects_list"),
