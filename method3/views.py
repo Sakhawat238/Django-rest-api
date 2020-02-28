@@ -43,3 +43,7 @@ def SubjectDetailViewset(request, id):
     elif request.method == 'DELETE':
         subject.delete()
         return HttpResponse(status=204)
+
+
+# note that, what we have done here is almost same as the procedures in method1 module
+# except, we have used few urls and checked request method to perform different operations
