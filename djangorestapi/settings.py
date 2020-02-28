@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     'method1',
     'method2',
     'method3',
+    'method4',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
