@@ -24,7 +24,7 @@ class SubjectDetailGenericview(generics.GenericAPIView, mixins.RetrieveModelMixi
         return self.retrieve(request)
 
     def put(self, request, id):
-        return self.update(request)
+        return self.update(request, id)
 
     def delete(self, request, id):
         return self.destroy(request)
