@@ -26,6 +26,10 @@ class Teacher(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def students(self):
+        return self.student_set.all()
+
 
 class Student(models.Model):
     name = models.CharField(max_length=100, default='')
