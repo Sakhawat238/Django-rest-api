@@ -6,8 +6,8 @@ from method4.serializers import SubjectSerializer, Subject
 
 # api_view decorator provides us with a browsable api interface
 # we can use Response provides by rest_framework instead of django JsonResponse 
-# aslo we no longer have to use Jsonparser to parse request body
-# we have alos used status class provided by rest_framework
+# also we no longer have to use Jsonparser to parse request body
+# we have also used status class provided by rest_framework
 
 @api_view(['GET', 'POST'])
 def SubjectViewset(request):

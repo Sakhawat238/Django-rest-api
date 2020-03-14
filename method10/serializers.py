@@ -30,6 +30,7 @@ class TeacherSerializer(serializers.ModelSerializer):
     # When we get all teachers list, we also want details of their students
     # So we declared a property 'students' in Teacher model
     # Then we used StudentSerializer to serialize students data
+    # StudentSerializer must be defined beforehand.
     students = StudentSerializer(many=True)
     class Meta:
         model = Teacher
