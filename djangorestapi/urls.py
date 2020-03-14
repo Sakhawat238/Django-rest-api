@@ -13,6 +13,7 @@ urlpatterns = [
     path('api/m8/',include('method8.urls')),
     path('api/m9/',include('method9.urls')),
     path('api/m10/',include('method10.urls')),
+    path('api/m11/',include('method11.urls')),
     path('api/auth/',include('authentication.urls')),
     path('api/tokenauth/',include('authenticationtoken.urls'))
 ]

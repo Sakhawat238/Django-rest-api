@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'method8',
     'method9',
     'method10',
+    'method11',
     'authentication',
     'authenticationtoken',
     'django.contrib.admin',
