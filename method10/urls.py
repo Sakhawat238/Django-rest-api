@@ -1,9 +1,11 @@
-from django.urls import path
-from method10.views import StudentNestedView, TeacherNestedView
+from django.urls import path, include
+from rest_framework import routers
+from method10.views import StudentNestedViewSet, TeacherNestedViewSet
 
+router = routers.DefaultRouter()
+router.register('students', StudentNestedViewSet)
+router.register('teachers', TeacherNestedViewSet)
 
 urlpatterns = [
-    path('students/', StudentNestedView.as_view(), name="student_nested_view"),
-    path('teachers/', TeacherNestedView.as_view(), name="teacher_nested_view")
+    path('', include(router.urls))   
 ]
-

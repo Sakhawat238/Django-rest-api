@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import serializers
 from Table.models  import School, Subject, Teacher, Student
 
@@ -34,4 +35,52 @@ class TeacherSerializer(serializers.ModelSerializer):
     students = StudentSerializer(many=True)
     class Meta:
         model = Teacher
-        fields = ['name','age', 'school', 'subject', 'students']
+        fields = ['id','name','age', 'school', 'subject', 'students']
+
+
+    # Here we implemented create mtehod to perform complex opration.
+    # While creating a teacher we will add subjects (many to many field)
+    # We also create students and associate them with this teacher.
+    # A request body will look like this.
+    # {
+    #     "name": "Joynal Abedin",
+    #     "age": 35,
+    #     "school": 1,
+    #     "subject": [3,5],
+    #     "students": [
+    #           {
+    #               "name": "Arman",
+    #               "roll": 6
+    #           }
+    #       ]
+    # }
+    def create(self, validated_data):
+        subjects = validated_data.pop('subject')
+        students = validated_data.pop('students')
+        teacher = Teacher.objects.create(**validated_data)
+        for subject in subjects:
+            teacher.subject.add(subject)
+        teacher.save()
+        for student in students:
+            Student.objects.create(**student, teacher=teacher)
+        return teacher
+
+
+    # Here we update a teacher + his subjects
+    # {
+    #     "name": "Joynal Abedin",
+    #     "age": 55,
+    #     "school": 1,
+    #     "subject": [2,6],
+    #     "students": []
+    # }
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+        instance.age = validated_data.get('age', instance.age)
+        instance.school = validated_data.get('school')
+        instance.subject.clear()
+        subjects = validated_data.pop('subject')
+        for subject in subjects:
+            instance.subject.add(subject)
+        instance.save()
+        return instance
